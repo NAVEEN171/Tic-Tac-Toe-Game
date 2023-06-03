@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="icon" href="E:\tic-tac-toe-game-linear-2806280hello.jpg">
+    <style>
+        body,html{
+            height:100%;
+            width:100%;
+
+
+        }
+        .modebutton:hover{
+            background-color:#52abc9;
+            cursor:pointer;
+            transform:scale(1.0) translateY(10px);
+            transition:0.4s;
+        }
+        .butt:hover{
+            background-color:#25d325;
+            cursor:pointer;
+            transform:scale(1.0) translateY(10px);
+            transition:0.4s;
+        }
+        body{
+            padding:0px;
+            margin:0px;
+            background-color: black;
+        }
+        .nav{
+            min-height:75px;
+            width:100%;
+            background-color:rgb(220, 30, 220);
+            color:white;
+            display:flex;
+            align-items: center;
+            justify-content:space-between;
+            
+            
+            
+        }
+        .home{
+          /* width:23%;*/
+            min-height:50px;
+            display:flex;
+            margin-left:30px;
+    
+            justify-content: flex-start;
+            align-items: center;
+            
+           
+            font-size:23px;
+            font-family: sans-serif;
+          /*  margin-left:40px;*/
+            
+        
+        }
+        .hel{
+            background-color:transparent;
+            border:2px solid black;
+            min-height:23px;
+           /* width:25%;*/
+            text-align: center;
+            margin-left:10px;
+            
+        }
+        .name{
+           /* width:23%;*/
+            height:50px;
+            color:white;
+            font-size:44px;
+            font-weight:bold;
+            display:flex;
+    align-items:center;
+    
+           /* background: linear-gradient(to  right, rgb(220, 31, 125),rgb(97, 206, 97),darkblue);*/
+    
+    
+            text-align:center;
+            margin:0 auto;
+    
+
+
+            
+           
+        
+            
+            
+            
+        }
+        .board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      width: 30%;
+      height:60% ;
+      
+      background-color: transparent;
+      
+     
+    }
+    .bt-0{
+        border-top:none;
+    }
+    .bb-0{
+        border-bottom: none;
+    }
+    .bl-0{
+        border-left:none;
+    }
+    .br-0{
+        border-right:none;
+    }
+
+    .cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      
+      cursor: pointer;
+      color:hotpink;
+      font-family: sans-serif;
+      
+      
+      
+      border:2px solid white;
+     
+      
+      
+      
+      
+    }
+    .cells{
+        
+        font-size: 100px;
+        
+       
+    }
+    .hypo{
+        width:25%;
+        height:80%;
+        background: linear-gradient(to bottom right,darkblue,purple,rgb(97, 206, 97),darkblue);
+
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    .ind{
+        
+        height:60%;
+        width:60%;
+        
+    }
+    .player1{
+        font-size:20px;
+        font-weight:bold;
+        height:35%;
+        width:55%;
+        margin-top:10px;
+        
+
+
+    }
+    .hem{
+        height:80%;
+        width:60%;
+        margin-top:10px;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .max{
+        margin-top:10px;
+        display:inline-block;
+        border:2px solid black;
+        height:35%;
+        width:10%;
+        font-size:24px;
+        font-weight:bold;
+        
+        text-align:center;
+        margin-right:25px;
+       
+    }
+    .container{
+        height:50%;
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        
+    }
+    .cumm{
+        width:100%;
+        height:90vh;
+        display:flex;
+        justify-content:space-evenly;
+        align-items: center;
+        background-color: black;
+    }
+    .butt{
+    
+    color:white;background-color:rgb(229, 9, 20);
+    height:60px;
+            width:121px;
+            text-align:center;
+            border-radius: 5px;
+            margin-bottom:20px;
+        
+            border:none;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 0.7s 3;
+}
+.boxx{
+    width:70%;
+    height:10%;
+    border:2px solid black;
+    margin-top:20px;
+    color:white;
+    display: flex;
+    justify-content: center; /* horizontally center the content */
+    align-items: center;
+    font-family: sans-serif;
+    letter-spacing:2px;
+    
+
+}
+.modebutton{
+    min-height:40px;
+    font-size:30px;
+    /*width: 5%;*/
+    
+    background-color: rgb(229, 9, 20);
+    border:none;
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+    margin-left:20px;
+}
+.row{
+    width:100%;
+    height:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+}
+
+@media (max-width: 749px) and (min-width:564px) {
+   body,html{
+    width:100%;
+
+   }
+  .nav {
+    flex-direction: column;
+    
+    min-height:30px;
+     
+  }
+
+  .name {
+    font-size: 30px;
+    order: 1; /* Move the .name element to the top */
+    margin-bottom: 10px;
+  }
+
+  
+    
+ /* Change the order of .home element */
+ .home{
+    font-size:15px;
+
+ }
+ .modebutton{
+    font-size:20px;
+    min-height:40px;
+
+ }
+ .board{
+    width:60%;
+    margin:30px;
+ }
+ .cells{
+    font-size:80px;
+ }
+
+ 
+  .cumm{
+    height:120vh;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    width:100%;
+  }
+  .hypo{
+    width:90%;
+    height:50%;
+    flex-direction:row;
+    margin-bottom:20px;
+  }
+  .ind{
+    width:70%;
+    height:80%;
+    
+    order:1;
+
+  }
+  .boxx{
+    height:50%;
+    order:2;
+    font-size:15px;
+    padding:5px;
+  }
+  .hem{
+    width:70%;
+    order:2;
+    
+  }
+  .player1{
+    font-size:18px;
+  }
+  .butt{
+    order:3;
+    height:30px;
+    margin-right:10px;
+    
+  }
+}
+
+@media(min-width: 1101px) and (max-width: 1300px){
+    .board{
+        width:35%;
+    }
+    .hypo{
+        width:30%;
+    }
+    .container{
+        width:100%;
+        height:40%;
+    }
+    .player1{
+      font-size:18px;
+        width:80%
+    }
+    .max{
+        width:20%;
+    }
+    .boxx{
+        padding:5px;
+    }
+
+}
+
+@media (min-width:438px)and (max-width:563px){
+    body,html{
+    width:100%;
+
+   }
+  .nav {
+    flex-direction: column;
+    
+    min-height:30px;
+     
+  }
+
+  .name {
+    font-size: 30px;
+    order: 1; /* Move the .name element to the top */
+   margin-bottom: 10px;
+  }
+
+  
+    
+ /* Change the order of .home element */
+ .home{
+    font-size:15px;
+
+ }
+ .modebutton{
+    font-size:20px;
+    min-height:40px;
+
+ }
+ .board{
+    width:80%;
+    height:40%;
+    margin:20px;
+ }
+ .cells{
+    font-size:80px;
+ }
+
+ 
+  .cumm{
+    height:120vh;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    width:100%;
+  }
+  .hypo{
+    width:90%;
+    height:30%;
+    flex-direction:row;
+   margin-bottom:20px;
+  }
+  .ind{
+    width:70%;
+    height:80%;
+    
+    order:1;
+
+  }
+  .boxx{
+    height:20%;
+    width:60%;
+    order:2;
+    font-size:12px;
+    padding:5px;
+  }
+  .hem{
+    width:90%;
+    height:90%;
+    order:2;
+    
+  }
+  .player1{
+    font-size:15px;
+  }
+  .max{
+    height:25%;
+    width:8%;
+    font-size:17px;
+  }
+  .butt{
+    order:3;
+    height:30px;
+    margin-right:10px;
+    
+  }
+  .row{
+    height: 80%;
+  }
+  
+
+
+}
+@media (max-width:437px){
+    body,html{
+    width:100%;
+
+   }
+  .nav {
+    flex-direction: column;
+    
+    min-height:30px;
+     
+  }
+
+  .name {
+    font-size: 30px;
+    order: 1; /* Move the .name element to the top */
+   margin-bottom: 10px;
+  }
+
+  
+    
+ /* Change the order of .home element */
+ .home{
+    font-size:15px;
+
+ }
+ .modebutton{
+    font-size:20px;
+    min-height:40px;
+
+ }
+ .board{
+    width:90%;
+    height:35%;
+    margin:20px;
+ }
+ .cells{
+    font-size:80px;
+ }
+
+ 
+  .cumm{
+    height:120vh;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    width:100%;
+  }
+  .hypo{
+    width:90%;
+    height:25%;
+    flex-direction:row;
+   margin-bottom:10px;
+  }
+  .ind{
+    width:70%;
+    height:80%;
+    
+    order:1;
+
+  }
+  .boxx{
+    height:20%;
+    width:60%;
+    order:2;
+    font-size:10px;
+    padding:5px;
+  }
+  .hem{
+    width:90%;
+    height:80%;
+    order:2;
+    
+  }
+  .player1{
+    font-size:10px;
+  }
+  .max{
+    height:20%;
+    width:6%;
+    font-size:10px;
+  }
+  .butt{
+    order:3;
+    height:30px;
+    margin-right:10px;
+    
+  }
+  .row{
+    height: 80%;
+  }
+  
+
+
+}
+
+
+
+@media(min-width:751px) and (max-width: 1100px){
+    .board{
+        width:40%;
+      
+        
+    }
+    .hypo{
+        width:35%;
+    }
+    .container{
+        width:100%;
+        height:40%;
+    }
+    .player1{
+      font-size:18px;
+        width:80%
+    }
+    .max{
+        width:20%;
+    }
+    .boxx{
+        padding:5px;
+    }
+    
+    
+}
+
+
+
+
+    
+       
+    </style>
+</head>
+<body>
+    <div class="nav">
+        
+        <div class="home">
+            <label for="mySelect">Theme:</label>
+            <select class="hel" id="ron" onclick="changetheme()">
+                <option value="option1" >Dark Mode</option>
+                <option value="option2">Light Mode</option>
+                
+              </select>
+        </div>
+        <div class="name">
+            TIC TAC TOE 
+        
+        
+        <button class="modebutton" id="cbutton" onclick="tooglehead()">2P</button>
+    </div>
+</div>
+    <div class="cumm" id="commo">
+    <div class="board" id="mam">
+        <div class="cell "style="border-left:0 !important;border-top:0 !important;"><span class="cells"></span></div>
+        <div class="cell" style="border-top:0 !important;"><span class="cells"></span></div>
+        <div class="cell" style="border-top:0 !important;border-right:0 !important;"><span class="cells"></span></div>
+        <div class="cell" style="border-left:0 !important;"><span class="cells"></span></div>
+        <div class="cell" ><span class="cells"></span></div>
+        <div class="cell" style="border-right:0 !important;"><span class="cells"></span></div>
+        <div class="cell"style="border-left:0 !important;border-bottom:0 !important;"><span class="cells"></span></div>
+        <div class="cell"  style="border-bottom:0 !important;"><span class="cells"></span></div>
+        <div class="cell" style="border-right:0 !important; border-bottom:0 !important;"><span class="cells"></span></div>
+        </div>
+        <div class="hypo">
+            <div class="row">
+            <img class="ind"src="https://i.pinimg.com/originals/ae/69/17/ae6917bf0721bb4181bc4e6033203ef3.gif">
+            <div class="boxx" id="boxy">Turn for X</div>
+        </div>
+            <div class="hem">
+                <div class="container">
+                <div class="player1">player1 (X)
+                    
+                    </div>
+                    <span id="player"class="max">0</span>
+                </div>
+                <div class="container">   
+                <div class="player1">Tie
+                        </div>
+                        <span id="tie" class="max">0</span>
+                    </div>
+                        <div class="container">
+                <div class="player1" id="changee">player2 (0)
+                          </div>
+                          <span id="computer" class="max">0</span>
+                        </div>
+            </div>
+            <button id="bu" class="butt"  type="button">RESET</button>
+        </div>
+    </div>
+<script>
+    let mymusic=new Audio("E:\Master-the-Blaster-BGM-Ringtone-1.mp3");
+    let Mus=new Audio("E:\Ting Sound Effect.mp3");
+    let turn="X";
+    let iot=document.getElementById("mam");
+    let player=0;
+    let computer=0;
+    let Tie=0;
+    let win="false";
+    let playy=document.getElementById("player");
+    let tiee=document.getElementById("tie");
+    let comp=document.getElementById("computer");
+    let button=document.getElementById("bu");
+    let boom=document.getElementById("boxy");
+    let is_gameover=false;
+    let cbut=document.getElementById("cbutton"); 
+    let colorr=document.getElementById("commo") ;
+    let chan=document.getElementById("changee");
+    function changetheme(){
+        let selected_option=document.getElementById("ron").value;
+        if(selected_option==="option1"){
+            changeDark()
+        }
+        else if(selected_option==="option2"){
+            changeLim()
+
+        }
+    }
+    
+    function changeLim(){
+        console.log("color is changing")
+        colorr.style.backgroundColor="white";
+        let hi = document.getElementsByClassName("cell");
+        celling=Array.from(hi)
+        Array.from(hi).forEach(g=>{
+            g.style.border="2px solid black";
+            console.log(g)
+            if(celling[0]===g){
+                celling[0].style.borderLeft="0px";
+                celling[0].style.borderTop="0px";
+
+            }
+            else if(celling[1]===g){
+                celling[1].style.borderTop="0px";
+                
+            }
+            else if(celling[2]===g){
+                celling[2].style.borderTop="0px";
+                celling[2].style.borderRight="0px";
+                
+            }
+            else if(celling[3]===g){
+                celling[3].style.borderLeft="0px";
+                
+                
+            }
+            else if(celling[5]===g){
+                celling[5].style.borderRight="0px";
+                
+                
+            }
+            else if(celling[6]===g){
+                celling[6].style.borderLeft="0px";
+                celling[6].style.borderBottom="0px";
+                
+                
+            }
+            else if(celling[7]===g){
+                celling[7].style.borderBottom="0px";
+                
+                
+            }
+            else if(celling[8]===g){
+                celling[8].style.borderRight="0px";
+                celling[8].style.borderBottom="0px";
+                
+                
+            }
+            /*e.forEach(f =>{
+                console.log(boxtext[f]);
+                boxtext[f].classList.add("blink");
+                setTimeout(() => {
+                boxtext[f].classList.remove("blink");
+            }, 3000); */
+               
+        }
+
+        )
+
+
+    }
+    function changeDark(){
+        console.log("color is changing")
+        colorr.style.backgroundColor="black";
+        
+        let hi = document.getElementsByClassName("cell");
+        celling=Array.from(hi)
+        Array.from(hi).forEach(g=>{
+            g.style.border="2px solid white";
+            if(celling[0]===g){
+                celling[0].style.borderLeft="0px";
+                celling[0].style.borderTop="0px";
+
+            }
+            else if(celling[1]===g){
+                celling[1].style.borderTop="0px";
+                
+            }
+            else if(celling[2]===g){
+                celling[2].style.borderTop="0px";
+                celling[2].style.borderRight="0px";
+                
+            }
+            else if(celling[3]===g){
+                celling[3].style.borderLeft="0px";
+                
+                
+            }
+            else if(celling[5]===g){
+                celling[5].style.borderRight="0px";
+                
+                
+            }
+            else if(celling[6]===g){
+                celling[6].style.borderLeft="0px";
+                celling[6].style.borderBottom="0px";
+                
+                
+            }
+            else if(celling[7]===g){
+                celling[7].style.borderBottom="0px";
+                
+                
+            }
+            else if(celling[8]===g){
+                celling[8].style.borderRight="0px";
+                celling[8].style.borderBottom="0px";
+                
+                
+            }
+        }
+
+        )
+
+
+    }
+    
+    function tooglehead(){
+        if(cbut.innerText==="2P"){
+            cbut.innerText="1P";
+            chan.innerText="computer (O)"
+            setTimeout(button.click()
+
+            ,1000)
+            setTimeout(
+           clean
+                , 1000);
+        }
+        else{
+            cbut.innerText="2P";
+            chan.innerText="player2 (O)"
+            setTimeout(button.click()
+
+            ,1000)
+            setTimeout(
+           clean
+                , 1000);
+        }
+    }
+    
+    button.addEventListener('click',()=>{
+        console.log("button clicked")
+        let hi = document.getElementsByClassName("cell");
+        player=0;
+        computer=0;
+        Tie=0;
+        isgameover=true;
+        playy.innerText=player;
+        comp.innerText=computer;
+        tiee.innerText=Tie;
+        boom.innerText="Turn for X";
+        win="false";
+        
+        
+        
+        Array.from(hi).forEach(g=>{
+            let boxtext = g.querySelector(".cells")
+            boxtext.innerText="";
+
+            
+
+        })
+        
+
+    })
+    function clean(){
+        console.log("button clicked")
+        let hi = document.getElementsByClassName("cell");
+        turn="X";
+        boom.innerText="Turn for X"
+    
+
+        
+        
+        Array.from(hi).forEach(g=>{
+            let boxtext = g.querySelector(".cells")
+            boxtext.innerText="";
+
+            
+
+        })
+        
+
+    }
+    
+    let count=0
+
+    let changeturn =()=>{
+        if(is_gameover===true){
+            return;
+        
+        }
+        
+        console.log("change function is running")
+        return turn==="X"? "O":"X"
+    }
+    let tiematch =()=>{
+       
+    
+        let boxtext = Array.from(document.getElementsByClassName("cells"));
+        const allInnerTextsPresent = boxtext.every(element => element.innerText.trim() !== "");
+        if (allInnerTextsPresent) {
+         Tie += 1;
+         
+         boom.innerText="Game Tied"
+         count++;
+         tiee.innerText=Tie;
+         win="false";
+         setTimeout(
+           clean, 2000);
+            
+        }
+        }
+        const computer_game = () => {
+          
+            console.log("computer funtion is running!")
+  let boxtext = document.getElementsByClassName("cells");
+
+  let wins = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  let placed = false; // Flag to track if "O" has been placed
+
+  wins.forEach(m =>{
+    if (placed){
+         console.log(placed)
+    }
+
+    else{
+      if(
+      (boxtext[m[0]].innerText === boxtext[m[1]].innerText) && (boxtext[m[0]].innerText !== "") ||
+      (boxtext[m[1]].innerText === boxtext[m[2]].innerText) && (boxtext[m[1]].innerText !== "")  ||
+      (boxtext[m[2]].innerText === boxtext[m[0]].innerText) && (boxtext[m[2]].innerText !== "") 
+    ){
+        console.log(wins[m])
+        console.log("inside cf()")
+      
+      if (boxtext[m[0]].innerText === "") {
+        console.log(m);
+        boxtext[m[0]].innerText = "O";
+        placed = true;
+        if(musi!=0){
+             changecount()
+            }
+        
+        
+      } else if (boxtext[m[1]].innerText === "") {
+        boxtext[m[1]].innerText = "O";
+        console.log(m);
+        placed = true;
+        if(musi!=0){
+             changecount()
+            }
+        
+
+      } else if (boxtext[m[2]].innerText === "") {
+        boxtext[m[2]].innerText = "O";
+        console.log(m);
+        placed = true;
+        if(musi!=0){
+             changecount()
+            }
+    
+        
+      }
+      if(placed){
+        turn="O"
+        checkWin();
+        
+        
+    }
+      turn="X"
+      console.log(`${turn}out of tghe comp func`)
+      
+      
+      
+      
+    }
+    
+}}
+      
+    
+  );
+
+  if (placed) {
+    return; // Break out of the function if "O" has been placed
+  }
+
+  // Find all the empty cells
+  let emptyCells = [];
+  for (let i = 0; i < boxtext.length; i++) {
+    if (boxtext[i].innerText === "") {
+      emptyCells.push(i);
+    }
+  }
+  if(emptyCells.length!=0){
+  // Select a random empty cell
+    let randomIndex = Math.floor(Math.random() * emptyCells.length);
+    let randomCell = emptyCells[randomIndex];
+
+  // Place "O" in the randomly selected cell
+     boxtext[randomCell].innerText = "O";
+     if(musi!=0){
+             changecount()
+            }
+     placed=true
+     console.log("cf2 is running")
+     checkWin();
+     turn="X"
+  }
+};
+
+
+
+
+
+
+
+
+
+        
+
+
+        
+
+    
+    const checkWin = ()=>{
+    let boxtext = document.getElementsByClassName("cells");
+   
+
+
+    let wins = [
+        [0, 1, 2 ],
+        [3, 4, 5 ],
+        [6, 7, 8 ],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ]
+    wins.forEach(e =>{
+       if(is_gameover===true){
+          return;
+       }
+        if((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "") ){
+            console.log(`${turn} has won`);
+            
+            
+            let delay=3000;
+            if (turn==="X"){
+                
+            
+                player=player+1;
+                is_gameover=true;
+                
+                playy.innerText=player;
+                boom.innerText=turn +" won"
+                setTimeout(() => {
+  is_gameover = false;
+  
+}, delay); 
+            }
+
+
+
+            
+            else if(turn=="O"){
+                computer=computer+1;
+                is_gameover=true;
+                
+                comp.innerText=computer;
+                boom.innerText=turn+" won"
+                setTimeout(() => {
+  is_gameover = false;
+  
+}, delay); 
+setTimeout(() => {
+  win = "false";
+  
+}, delay); 
+
+            }
+
+            e.forEach(f =>{
+                console.log(boxtext[f]);
+                boxtext[f].classList.add("blink");
+                setTimeout(() => {
+                boxtext[f].classList.remove("blink");
+            }, 3000); 
+               
+            })
+            setTimeout(
+           clean
+                , 3000);
+            
+        }
+    })
+    
+       
+              
+    
+}
+    
+
+/*function delayedAddEventListener(late) {
+  setTimeout(() => {
+    console.log("Delayed function is running")
+    // Add your event listener function here
+    let hee=document.getElementsByClassName("cell");
+
+    Array.from(hee).forEach(element =>{
+
+    let boxtext = element.querySelector(".cells")
+    element.addEventListener("click", eventListener);
+
+    
+  })
+  }, late); // Delay of 5 seconds (5000 milliseconds)
+}*/
+let musi=0
+function changecount(){
+    Mus.pause;
+    Mus.currentTime=0;
+    Mus.play()
+    console.log("hapeening")
+    
+}
+
+
+
+    let hee=document.getElementsByClassName("cell");
+
+    Array.from(hee).forEach(element =>{
+    
+    let boxtext = element.querySelector(".cells")
+    
+    element.addEventListener('click', ()=>{
+        mymusic.play();
+      if((is_gameover===false && cbut.innerText==="2P")  ||(is_gameover===false && cbut.innerText==="1P" && turn==="X")){
+        console.log(turn,"turn")
+        if(boxtext.innerText === ''){
+            Mus.play();
+           
+
+            
+            if(musi!=0){
+             changecount()
+            }
+            musi++;
+
+            boxtext.innerText = turn;
+            console.log(turn)
+            
+            checkWin();
+            
+    
+               
+
+            
+            
+           
+            
+            turn = changeturn();
+            console.log(turn)
+            
+            if (turn==="O" && cbut.innerText==="1P" && is_gameover===false){
+                let delay=1000
+                setTimeout(computer_game,delay);
+                setTimeout(innerchange,delay);
+                
+               
+                
+            
+        }
+                
+            } 
+        }  
+            
+            
+            function innerchange( ){
+                if(!is_gameover){
+                    
+                console.log("turn is running")
+                
+                
+                
+                
+                
+
+                boom.innerText="Turn for"+" "+turn
+                }
+            }
+            innerchange()
+            
+            Mus.play();
+            let emptyCells = [];
+            for (let i = 0; i < boxtext.length; i++) {
+             if (boxtext[i].innerText === "") {
+               emptyCells.push(i);
+             }
+            }
+            if (is_gameover===false && emptyCells.length===0){
+                tiematch();
+               
+            }
+            
+
+            
+          //  mymusic.play();
+            
+            
+            
+        }
+        
+    )
+    })
+    
+    
+   
+
+   /* console.log("Welcome to Tic Tac Toe")
+let music = new Audio("music.mp3")
+let audioTurn = new Audio("ting.mp3")
+let gameover = new Audio("gameover.mp3")
+let turn = "X"
+let isgameover = false;
+
+// Function to change the turn
+const changeTurn = ()=>{
+    return turn === "X"? "0": "X"
+}
+
+// Function to check for a win
+const checkWin = ()=>{
+    let boxtext = document.getElementsByClassName('boxtext');
+    let wins = [
+        [0, 1, 2, 5, 5, 0],
+        [3, 4, 5, 5, 15, 0],
+        [6, 7, 8, 5, 25, 0],
+        [0, 3, 6, -5, 15, 90],
+        [1, 4, 7, 5, 15, 90],
+        [2, 5, 8, 15, 15, 90],
+        [0, 4, 8, 5, 15, 45],
+        [2, 4, 6, 5, 15, 135],
+    ]
+    wins.forEach(e =>{
+        if((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "") ){
+            document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
+            isgameover = true
+            document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "200px";
+            document.querySelector(".line").style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
+            document.querySelector(".line").style.width = "20vw";
+        }
+    })
+}
+
+// Game Logic
+// music.play()
+let boxes = document.getElementsByClassName("box");
+Array.from(boxes).forEach(element =>{
+    let boxtext = element.querySelector('.boxtext');
+    element.addEventListener('click', ()=>{
+        if(boxtext.innerText === ''){
+            boxtext.innerText = turn;
+            turn = changeTurn();
+            audioTurn.play();
+            checkWin();
+            if (!isgameover){
+                document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
+            } 
+        }
+    })
+})
+
+// Add onclick listener to reset button
+reset.addEventListener('click', ()=>{
+    let boxtexts = document.querySelectorAll('.boxtext');
+    Array.from(boxtexts).forEach(element => {
+        element.innerText = ""
+    });
+    turn = "X"; 
+    isgameover = false
+    document.querySelector(".line").style.width = "0vw";
+    document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
+    document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "0px"
+})
+*/
+
+    
+</script>      
+        
+
+
+    
+
+    
+</body>
+</html>
